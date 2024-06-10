@@ -98,7 +98,7 @@ WSGI_APPLICATION = 'video_platform.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASE_URL='postgresql://postgres:qANSLVvebTjKMbEnPkLDTDQYCMSYaaxb@monorail.proxy.rlwy.net:47947/railway'
+DATABASE_URL='postgresql://postgres:BMQemkQVWFWTuNKEvGrKgiTTzJcGPebR@monorail.proxy.rlwy.net:24842/railway'
 # DATABASE_URL='nelvik.mysql.pythonanywhere-services.com'
 
 DATABASES = {
