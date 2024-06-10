@@ -4,7 +4,7 @@ This repository contains the frontend and backend code for a video sharing platf
 
 ### Deployed Link
 - Backend: https://video-platform-production.up.railway.app/
-- Frontend: https://video-platform-eosin.vercel.app/upload
+- Frontend: https://video-platform-eosin.vercel.app/
 
 ## Getting Started
 
