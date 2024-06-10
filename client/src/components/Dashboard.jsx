@@ -20,7 +20,7 @@ function Dashboard() {
 
         const fetchVideos = async () => {
             try {
-                const response = await axios.get('https://video-platform-production.up.railway.app//', {
+                const response = await axios.get('https://video-platform-production.up.railway.app/', {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Token ${token}`,
