@@ -3,8 +3,8 @@
 This repository contains the frontend and backend code for a video sharing platform. The frontend is built using React and the backend uses Django with Django REST Framework.
 
 ### Deployed Link
-- Backend: 
-- Frontend: 
+- Backend: https://video-platform-production.up.railway.app/
+- Frontend: https://video-platform-eosin.vercel.app/upload
 
 ## Getting Started
 
