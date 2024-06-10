@@ -31,7 +31,7 @@ ALLOWED_HOSTS = [
     '*',
     'localhost',
     '127.0.0.1',
-    'videoplatform-production.up.railway.app',
+    'video-platform-production.up.railway.app',
     ]
 
 PORT = int(os.getenv('PORT', 8080))
@@ -254,7 +254,7 @@ CORS_EXPOSE_HEADERS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://videoplatform-production.up.railway.app',
+    'https://video-platform-production.up.railway.app',
 ]
 
 
