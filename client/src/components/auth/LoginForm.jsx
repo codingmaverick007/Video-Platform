@@ -18,7 +18,7 @@ function LoginForm() {
         setLoading(true);
         setSuccess(false);
         try {
-            const response = await axios.post('https://videoplatform-production.up.railway.app/api/v1/rest-auth/login/', {
+            const response = await axios.post('https://video-platform-production.up.railway.app/api/v1/rest-auth/login/', {
                 email: email,
                 password: password,
             });

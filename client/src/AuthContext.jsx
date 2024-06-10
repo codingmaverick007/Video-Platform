@@ -25,7 +25,7 @@ const AuthProvider = ({ children }) => {
 
     const checkAdminStatus = useCallback(async () => {
         try {
-            const response = await axios.get('https://videoplatform-production.up.railway.app/api/v1/check-admin-status/', {
+            const response = await axios.get('https://video-platform-production.up.railway.app/api/v1/check-admin-status/', {
                 headers: {
                     Authorization: `Token ${token}`,
                     'Content-Type': 'application/json'
@@ -65,7 +65,7 @@ const AuthProvider = ({ children }) => {
 
     const logout = async () => {
         try {
-            await axios.post('https://videoplatform-production.up.railway.app/api/v1/rest-auth/logout/', null, {
+            await axios.post('https://video-platform-production.up.railway.app/api/v1/rest-auth/logout/', null, {
                 headers: {
                     Authorization: `Token ${token}`,
                     'Content-Type': 'application/json'

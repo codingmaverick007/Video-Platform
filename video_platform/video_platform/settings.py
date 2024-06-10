@@ -204,7 +204,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 LOGIN_REDIRECT_URL = 'posts'
 
-DJANGO_REST_AUTH_RESET_PASSWORD_CONFIRM_URL = 'https://videoplatform-production.up.railway.app/api/v1/rest-auth/password/reset/confirm/'
+DJANGO_REST_AUTH_RESET_PASSWORD_CONFIRM_URL = 'https://video-platform-production.up.railway.app/api/v1/rest-auth/password/reset/confirm/'
 
 # Email server configuration
 EMAIL_HOST = 'smtp.gmail.com'

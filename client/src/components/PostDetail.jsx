@@ -42,7 +42,7 @@ const PostDetail = ({ handleSharePost }) => {
 
     const fetchPostDetails = async () => {
         try {
-            const response = await axios.get(`https://videoplatform-production.up.railway.app/post-detail/${id}/`, {
+            const response = await axios.get(`https://video-platform-production.up.railway.app/post-detail/${id}/`, {
                 headers: {
                     'Authorization': `Token ${token}`,
                     'Accept': 'application/json',
@@ -58,7 +58,7 @@ const PostDetail = ({ handleSharePost }) => {
 
     const fetchComments = async () => {
         try {
-            const response = await axios.get(`https://videoplatform-production.up.railway.app/view-comments/${id}/`, {
+            const response = await axios.get(`https://video-platform-production.up.railway.app/view-comments/${id}/`, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Token ${token}`,
@@ -96,7 +96,7 @@ const PostDetail = ({ handleSharePost }) => {
         if (!newComment.trim()) return;
         try {
             const response = await axios.post(
-                `https://videoplatform-production.up.railway.app/add-comment/${id}/`,
+                `https://video-platform-production.up.railway.app/add-comment/${id}/`,
                 { post: id, comment: newComment },
                 {
                     headers: {
@@ -115,7 +115,7 @@ const PostDetail = ({ handleSharePost }) => {
 
     const handleDeletePost = async () => {
         try {
-            await axios.delete(`https://videoplatform-production.up.railway.app/post-delete/${id}/`, {
+            await axios.delete(`https://video-platform-production.up.railway.app/post-delete/${id}/`, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Token ${token}`,

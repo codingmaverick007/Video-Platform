@@ -47,7 +47,7 @@ function UploadVideo() {
         }
 
         try {
-            const response = await fetch('https://videoplatform-production.up.railway.app/post-upload/', {
+            const response = await fetch('https://video-platform-production.up.railway.app/post-upload/', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Token ${token}`,

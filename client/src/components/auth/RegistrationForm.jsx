@@ -23,7 +23,7 @@ function RegisterForm() {
         setLoading(true);
         setError(null);
         try {
-            await axios.post('https://videoplatform-production.up.railway.app/api/v1/rest-auth/registration/', {
+            await axios.post('https://video-platform-production.up.railway.app/api/v1/rest-auth/registration/', {
                 username,
                 email,
                 password1,

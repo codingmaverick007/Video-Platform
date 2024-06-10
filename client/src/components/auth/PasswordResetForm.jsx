@@ -20,7 +20,7 @@ const PasswordResetForm = () => {
         setLoading(true);
         setMessage('');
         try {
-            const response = await axios.post('https://videoplatform-production.up.railway.app/api/v1/rest-auth/password/reset/', { email });
+            const response = await axios.post('https://video-platform-production.up.railway.app/api/v1/rest-auth/password/reset/', { email });
             setMessage(response.data.detail);
             setSuccess(true);
             setTimeout(() => navigate('/login'), 3000); // Redirect after 3 seconds
