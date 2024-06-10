@@ -32,7 +32,13 @@ function RegisterForm() {
             setSuccess(true);
             setTimeout(() => navigate('/login'), 3000);
         } catch (error) {
-            setError('Registration failed. Please try again.');
+            if (error.response && error.response.data) {
+                const errorData = error.response.data;
+                const errorMessage = Object.values(errorData).flat().join(' ');
+                setError(errorMessage);
+            } else {
+                setError('Registration failed. Please try again.');
+            }
         } finally {
             setLoading(false);
         }
