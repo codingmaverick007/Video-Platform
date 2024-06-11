@@ -10,6 +10,7 @@ function LoginForm() {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(null);
     const { setLoggedIn, login } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -17,6 +18,7 @@ function LoginForm() {
         e.preventDefault();
         setLoading(true);
         setSuccess(false);
+        setError(null);
         try {
             const response = await axios.post('https://video-platform-production.up.railway.app/api/v1/rest-auth/login/', {
                 email: email,
@@ -30,6 +32,11 @@ function LoginForm() {
             navigate('/dashboard');
         } catch (error) {
             console.error('Login error:', error.response ? error.response.data : error.message);
+            if (error.response && error.response.data) {
+                setError(error.response.data);
+            } else {
+                setError({ non_field_errors: ['An unexpected error occurred. Please try again later.'] });
+            }
         } finally {
             setLoading(false);
         }
@@ -52,6 +59,15 @@ function LoginForm() {
                             Login successful! Redirecting...
                         </Alert>
                     )}
+                    {error && (
+                        <Box mb={2}>
+                            {Object.keys(error).map((key) => (
+                                <Alert severity="error" key={key}>
+                                    {error[key]}
+                                </Alert>
+                            ))}
+                        </Box>
+                    )}
                     <form onSubmit={handleLogin}>
                         <TextField
                             fullWidth
@@ -61,6 +77,8 @@ function LoginForm() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             disabled={loading}
+                            error={!!error?.email}
+                            helperText={error?.email}
                         />
                         <TextField
                             fullWidth
@@ -71,6 +89,8 @@ function LoginForm() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             disabled={loading}
+                            error={!!error?.password}
+                            helperText={error?.password}
                         />
                         <Button type="submit" variant="contained" color="primary" fullWidth disabled={loading}>
                             Login
