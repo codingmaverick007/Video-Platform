@@ -216,8 +216,6 @@ const PostDetail = ({ handleSharePost }) => {
                                         onClick={() => {
                                             window.open(postData[`share_${platform}`], '_blank');
                                             handleCloseShareModal();
-                                            // Optionally, show a success message for sharing
-                                            // setCopySuccess('success');
                                         }}
                                         startIcon={icon}
                                         variant="contained"
