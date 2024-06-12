@@ -5,9 +5,18 @@ from django.contrib.auth import (
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist
+from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.debug import sensitive_post_parameters
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_decode
+from django.views.generic import FormView
+from django.contrib.auth.forms import SetPasswordForm
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.views.generic.base import TemplateView
+from django.shortcuts import resolve_url
 
 from rest_framework import status
 from rest_framework.views import APIView
@@ -29,6 +38,7 @@ sensitive_post_parameters_m = method_decorator(
     )
 )
 
+User = get_user_model()
 
 class LoginView(GenericAPIView):
     """
@@ -236,3 +246,51 @@ class PasswordChangeView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response({"detail": _("New password has been saved.")})
+    
+
+class CustomPasswordResetConfirmView(FormView):
+    template_name = 'password_reset_confirm.html'
+    success_url = reverse_lazy('password_reset_complete')
+    form_class = SetPasswordForm
+
+    def get(self, request, *args, **kwargs):
+        uidb64 = kwargs['uidb64']
+        token = kwargs['token']
+        uid = urlsafe_base64_decode(uidb64).decode()
+        self.user = get_object_or_404(User, pk=uid)
+
+        if default_token_generator.check_token(self.user, token):
+            return super().get(request, *args, **kwargs)
+        else:
+            return self.render_to_response(self.get_context_data(token_invalid=True))
+
+    def form_valid(self, form):
+        form.save()
+        django_login(self.request, form.user)
+        return super().form_valid(form)
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.user
+        return kwargs
+    
+
+class PasswordContextMixin:
+    extra_context = None
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.update(
+            {"title": self.title, "subtitle": None, **(self.extra_context or {})}
+        )
+        return context
+    
+
+class CustomPasswordResetCompleteView(PasswordContextMixin, TemplateView):
+    template_name = "password_reset_complete.html"
+    title = _("Password reset complete")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["login_url"] = resolve_url(settings.LOGIN_URL)
+        return context
