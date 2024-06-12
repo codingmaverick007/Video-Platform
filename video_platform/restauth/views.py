@@ -253,6 +253,13 @@ class CustomPasswordResetConfirmView(FormView):
     success_url = reverse_lazy('password_reset_complete')
     form_class = SetPasswordForm
 
+    def get_user(self, uidb64):
+        try:
+            uid = urlsafe_base64_decode(uidb64).decode()
+            return get_object_or_404(User, pk=uid)
+        except (TypeError, ValueError, OverflowError, User.DoesNotExist):
+            return None
+
     def get(self, request, *args, **kwargs):
         uidb64 = kwargs['uidb64']
         token = kwargs['token']
