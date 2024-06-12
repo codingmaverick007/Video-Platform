@@ -203,7 +203,9 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
-LOGIN_REDIRECT_URL = 'posts'
+LOGIN_REDIRECT_URL = 'post-list'
+
+LOGIN_URL = '/api/v1/rest-auth/login/'
 
 DJANGO_REST_AUTH_RESET_PASSWORD_CONFIRM_URL = 'https://video-platform-production.up.railway.app/api/v1/rest-auth/password/reset/confirm/'
 
