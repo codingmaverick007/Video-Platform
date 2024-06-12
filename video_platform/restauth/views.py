@@ -264,7 +264,7 @@ class PasswordContextMixin:
         return context
     
 
-class PasswordResetConfirmView(PasswordContextMixin, FormView):
+class CustomPasswordResetConfirmView(PasswordContextMixin, FormView):
     form_class = SetPasswordForm
     post_reset_login = False
     post_reset_login_backend = None
