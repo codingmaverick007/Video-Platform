@@ -18,7 +18,7 @@ def validate_mime_type(file):
     
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    video = models.FileField(upload_to='', validators=[FileExtensionValidator(allowed_extensions=['mp4', 'mkv']), validate_mime_type])
+    video = models.FileField(upload_to='videos/', validators=[FileExtensionValidator(allowed_extensions=['mp4', 'mkv']), validate_mime_type])
     thumbnail = models.ImageField(upload_to='thumbnails/', null=True, blank=True)
     description = models.TextField()
     uploaded_at = models.DateField(auto_now_add=True)
