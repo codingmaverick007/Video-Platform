@@ -207,7 +207,11 @@ LOGIN_REDIRECT_URL = 'post-list'
 
 LOGIN_URL = '/api/v1/rest-auth/login/'
 
-DJANGO_REST_AUTH_RESET_PASSWORD_CONFIRM_URL = 'https://video-platform-production.up.railway.app/api/v1/rest-auth/password/reset/confirm/'
+# DJANGO_REST_AUTH_RESET_PASSWORD_CONFIRM_URL = 'https://video-platform-production.up.railway.app/api/v1/rest-auth/password/reset/confirm/'
+
+DJANGO_REST_AUTH = {
+    'PASSWORD_RESET_CONFIRM_URL': 'reset/{uid}/{token}/',
+}
 
 # Email server configuration
 EMAIL_HOST = 'smtp.gmail.com'
