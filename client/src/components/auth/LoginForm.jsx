@@ -23,6 +23,8 @@ function LoginForm() {
             const response = await axios.post('https://video-platform-production.up.railway.app/api/v1/rest-auth/login/', {
                 email: email,
                 password: password,
+            }, {
+                withCredentials: true, // Ensure credentials are sent with the request (including CSRF token)
             });
             const token = response.data.key;
             localStorage.setItem('token', token);
@@ -41,6 +43,7 @@ function LoginForm() {
             setLoading(false);
         }
     };
+    
 
     return (
         <BaseLayout>
