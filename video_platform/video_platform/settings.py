@@ -264,6 +264,7 @@ CORS_EXPOSE_HEADERS = [
 
 CSRF_TRUSTED_ORIGINS = [
     'https://video-platform-production.up.railway.app',
+    'https://video-platform-pr6xah83m-kelvins-projects-71e94a10.vercel.app',
 ]
 
 
