@@ -267,6 +267,9 @@ CSRF_TRUSTED_ORIGINS = [
     'https://video-platform-pr6xah83m-kelvins-projects-71e94a10.vercel.app',
 ]
 
+CSRF_COOKIE_NAME = 'csrftoken'
+CSRF_COOKIE_DOMAIN = None
+
 
 FILE_UPLOAD_HANDLERS = [
     'django.core.files.uploadhandler.TemporaryFileUploadHandler',
