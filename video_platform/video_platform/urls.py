@@ -26,7 +26,7 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('api/v1/rest-auth/', include('restauth.urls')),
     path('api/v1/rest-auth/registration/', include('restauth.registration.urls')),
-    path('accounts/', include('allauth.urls')),
+    path('api/v1/rest-auth/', include('allauth.urls')),
 ]
 if settings.DEBUG:
     urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
