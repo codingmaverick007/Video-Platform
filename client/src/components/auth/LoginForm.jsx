@@ -20,7 +20,7 @@ function LoginForm() {
         setSuccess(false);
         setError(null);
         try {
-            const response = await axios.post('https://video-platform-production.up.railway.app/api/v1/rest-auth/login/', {
+            const response = await axios.post('https://video-platform-production.up.railway.app/api/v1/rest-auth/signin/', {
                 email: email,
                 password: password,
             }, {
