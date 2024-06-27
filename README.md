@@ -96,7 +96,7 @@ npm start
 
 ## Features
 - User Authentication: Register, login, and logout functionality.
-- Video Upload: Users can upload videos.
+- Video Upload: Admin can upload videos.
 - Video Viewing: View a list of videos and their details.
 - Comments: Add and view comments on videos.
 - Social Sharing: Share videos via social media and email.
